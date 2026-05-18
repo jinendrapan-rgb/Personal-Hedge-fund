@@ -13,8 +13,8 @@ Built layer by layer. Each layer is verified before the next is started.
 | 1 | Data Infrastructure | ✅ built + tested (15 tests, live SEC PIT verified) |
 | 2 | Factor Engine | ✅ built + tested (31 tests total, real SEC fundamentals verified) |
 | 3 | Walk-Forward Backtest | ✅ built + tested (38 tests total; lookahead/survivorship/cost tests pass) |
-| 4 | AI Forensic Analysis | ⬜ next |
-| 5 | Portfolio Construction | ⬜ |
+| 4 | AI Forensic Analysis | ✅ built + tested (48 tests total; live OpenAI fraud/clean discrimination verified) |
+| 5 | Portfolio Construction | ⬜ next |
 | 6 | Risk Management | ⬜ |
 | 7 | Execution (Alpaca) | ⬜ |
 | 8 | Reporting + Dashboard | ⬜ |

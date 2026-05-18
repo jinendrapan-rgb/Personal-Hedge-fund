@@ -34,6 +34,8 @@ class Paths:
 class Settings:
     polygon_api_key: str = field(default_factory=lambda: os.getenv("POLYGON_API_KEY", ""))
     anthropic_api_key: str = field(default_factory=lambda: os.getenv("ANTHROPIC_API_KEY", ""))
+    openai_api_key: str = field(default_factory=lambda: os.getenv("OPENAI_API_KEY", ""))
+    openai_model: str = field(default_factory=lambda: os.getenv("OPENAI_MODEL", "gpt-4o"))
     alpaca_api_key: str = field(default_factory=lambda: os.getenv("ALPACA_API_KEY", ""))
     alpaca_secret_key: str = field(default_factory=lambda: os.getenv("ALPACA_SECRET_KEY", ""))
     alpaca_base_url: str = field(

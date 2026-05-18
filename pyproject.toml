@@ -9,6 +9,7 @@ dependencies = [
     "requests>=2.32",
     "python-dotenv>=1.0",
     "tenacity>=9.0",
+    "openai>=1.40",
 ]
 
 [project.optional-dependencies]
