@@ -14,6 +14,7 @@ dependencies = [
     "scikit-learn>=1.4",
     "cvxpy>=1.5",
     "alpaca-py>=0.30",
+    "streamlit>=1.36",
 ]
 
 [project.optional-dependencies]

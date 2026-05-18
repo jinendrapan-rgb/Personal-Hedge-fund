@@ -17,7 +17,18 @@ Built layer by layer. Each layer is verified before the next is started.
 | 5 | Portfolio Construction | ✅ built + tested (55 tests total; MVO+BL constraints verified) |
 | 6 | Risk Management | ✅ built + tested (61 tests total; full risk suite verified) |
 | 7 | Execution (Alpaca) | ✅ built + tested (68 tests total; deterministic clock verified) |
-| 8 | Reporting + Dashboard | ⬜ next |
+| 8 | Reporting + Dashboard | ✅ built + tested (74 tests total; dashboard launches, 8 tabs) |
+
+**All 8 layers built, tested, and verified.** Run the dashboard:
+
+```bash
+uv run streamlit run dashboard/app.py
+```
+
+Tabs: Overview · Research · Portfolio · Risk · Performance · Backtest ·
+Execution · JARVIS. Every layer has a `scripts/verify_layerN.py` that
+proves it on real data where no paid key is required (SEC, OpenAI) and on
+deterministic synthetic data otherwise.
 
 `greymatter.html` is a standalone interactive map of the full architecture
 (open in a browser). It is a diagram, not the running system.

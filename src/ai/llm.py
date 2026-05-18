@@ -63,6 +63,19 @@ class OpenAIClient:
         )
         return _coerce_json(resp.choices[0].message.content or "{}")
 
+    @retry(wait=wait_exponential(multiplier=1, min=2, max=30),
+           stop=stop_after_attempt(4), reraise=True)
+    def complete_text(self, system: str, user: str) -> str:
+        resp = self._client.chat.completions.create(
+            model=self._model,
+            temperature=0.3,
+            messages=[
+                {"role": "system", "content": system},
+                {"role": "user", "content": user},
+            ],
+        )
+        return resp.choices[0].message.content or ""
+
 
 class AnthropicClient:
     """Spec-default path (Claude Opus 4.7). Used when ANTHROPIC_API_KEY is
@@ -88,6 +101,15 @@ class AnthropicClient:
             messages=[{"role": "user", "content": user}],
         )
         return _coerce_json(msg.content[0].text)
+
+    @retry(wait=wait_exponential(multiplier=1, min=2, max=30),
+           stop=stop_after_attempt(4), reraise=True)
+    def complete_text(self, system: str, user: str) -> str:
+        msg = self._client.messages.create(
+            model=self._model, max_tokens=1500, temperature=0.3,
+            system=system, messages=[{"role": "user", "content": user}],
+        )
+        return msg.content[0].text
 
 
 def get_llm() -> LLMClient:
