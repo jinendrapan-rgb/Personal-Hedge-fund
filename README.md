@@ -15,8 +15,8 @@ Built layer by layer. Each layer is verified before the next is started.
 | 3 | Walk-Forward Backtest | ✅ built + tested (38 tests total; lookahead/survivorship/cost tests pass) |
 | 4 | AI Forensic Analysis | ✅ built + tested (48 tests total; live OpenAI fraud/clean discrimination verified) |
 | 5 | Portfolio Construction | ✅ built + tested (55 tests total; MVO+BL constraints verified) |
-| 6 | Risk Management | ⬜ next |
-| 7 | Execution (Alpaca) | ⬜ |
+| 6 | Risk Management | ✅ built + tested (61 tests total; full risk suite verified) |
+| 7 | Execution (Alpaca) | ⬜ next |
 | 8 | Reporting + Dashboard | ⬜ |
 
 `greymatter.html` is a standalone interactive map of the full architecture
