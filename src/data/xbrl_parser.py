@@ -36,6 +36,16 @@ STANDARD_CONCEPTS: dict[str, list[str]] = {
     "operating_income": ["OperatingIncomeLoss"],
     "long_term_debt": ["LongTermDebtNoncurrent", "LongTermDebt"],
     "shares_outstanding": ["CommonStockSharesOutstanding", "dei:EntityCommonStockSharesOutstanding"],
+    "cash": [
+        "CashAndCashEquivalentsAtCarryingValue",
+        "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents",
+    ],
+    "capex": [
+        "PaymentsToAcquirePropertyPlantAndEquipment",
+        "PaymentsForCapitalImprovements",
+    ],
+    "current_assets": ["AssetsCurrent"],
+    "current_liabilities": ["LiabilitiesCurrent"],
 }
 
 
