@@ -16,8 +16,8 @@ Built layer by layer. Each layer is verified before the next is started.
 | 4 | AI Forensic Analysis | ✅ built + tested (48 tests total; live OpenAI fraud/clean discrimination verified) |
 | 5 | Portfolio Construction | ✅ built + tested (55 tests total; MVO+BL constraints verified) |
 | 6 | Risk Management | ✅ built + tested (61 tests total; full risk suite verified) |
-| 7 | Execution (Alpaca) | ⬜ next |
-| 8 | Reporting + Dashboard | ⬜ |
+| 7 | Execution (Alpaca) | ✅ built + tested (68 tests total; deterministic clock verified) |
+| 8 | Reporting + Dashboard | ⬜ next |
 
 `greymatter.html` is a standalone interactive map of the full architecture
 (open in a browser). It is a diagram, not the running system.

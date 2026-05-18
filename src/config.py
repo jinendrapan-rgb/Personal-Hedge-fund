@@ -41,6 +41,9 @@ class Settings:
     alpaca_base_url: str = field(
         default_factory=lambda: os.getenv("ALPACA_BASE_URL", "https://paper-api.alpaca.markets")
     )
+    alpaca_live: bool = field(
+        default_factory=lambda: os.getenv("ALPACA_LIVE", "").lower() == "true"
+    )
     sec_user_agent: str = field(
         default_factory=lambda: os.getenv("SEC_USER_AGENT", "GreyMatter Research contact@example.com")
     )

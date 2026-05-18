@@ -13,6 +13,7 @@ dependencies = [
     "numpy>=1.26",
     "scikit-learn>=1.4",
     "cvxpy>=1.5",
+    "alpaca-py>=0.30",
 ]
 
 [project.optional-dependencies]
