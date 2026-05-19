@@ -72,9 +72,14 @@ class FactorEngine:
             return {}
 
     # ---- main ----------------------------------------------------------
-    def compute(self, as_of: str | dt.date) -> pd.DataFrame:
+    def compute(
+        self, as_of: str | dt.date, universe: list[str] | None = None
+    ) -> pd.DataFrame:
         asof = pd.Timestamp(as_of).normalize()
-        tickers = list(self.dm.get_universe(asof.date().isoformat()))
+        # Explicit universe lets the pipeline operate without a PIT
+        # membership file; falls back to the provider when not given.
+        tickers = list(universe) if universe else list(
+            self.dm.get_universe(asof.date().isoformat()))
         if not tickers:
             return self._empty()
 

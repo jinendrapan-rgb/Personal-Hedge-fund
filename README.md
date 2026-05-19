@@ -30,6 +30,34 @@ Execution · JARVIS. Every layer has a `scripts/verify_layerN.py` that
 proves it on real data where no paid key is required (SEC, OpenAI) and on
 deterministic synthetic data otherwise.
 
+## Runbook
+
+```bash
+uv run python -m src.run preflight                     # what's runnable now
+uv run python -m src.run daily --tickers AAPL,MSFT,... # daily pipeline
+uv run python -m src.run backtest --start 2018-01-01 --end 2024-12-31
+uv run streamlit run dashboard/app.py                  # dashboard
+```
+
+The daily pipeline (`src/pipeline.py`) chains all 8 layers and **refuses
+to build a portfolio on a degraded signal**: if price history is missing
+(e.g. Polygon plan lacks depth), the factor-coverage gate blocks at the
+factor stage with `ok: False` rather than trading a silently broken
+signal — the core discipline this whole system exists to enforce.
+
+### Current readiness
+
+- **Working on real data, no paid key:** SEC point-in-time fundamentals
+  (Layers 1–2: quality, value), OpenAI forensic layer (Layer 4),
+  optimiser/risk/execution/dashboard logic (Layers 5–8, tested).
+- **Blocked on data plan:** momentum, low-vol, revisions and the
+  walk-forward backtest need Polygon **Starter+** (current key is
+  recent-data-only; deep history returns 403). The pipeline reports this
+  precisely instead of failing silently.
+- **To go fully live:** upgrade the Polygon plan, add Alpaca keys, then
+  `preflight` → `daily`/`backtest` produce real results with no code
+  changes.
+
 `greymatter.html` is a standalone interactive map of the full architecture
 (open in a browser). It is a diagram, not the running system.
 
