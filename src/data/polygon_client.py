@@ -22,9 +22,12 @@ _COLS = ["open", "high", "low", "close", "volume", "vwap", "transactions"]
 
 
 def _to_ms(d: str | dt.date) -> str:
-    if isinstance(d, dt.date):
-        return d.isoformat()
-    return d
+    """Polygon's range endpoint wants bare YYYY-MM-DD. A pd.Timestamp is a
+    datetime subclass whose isoformat() includes a time component, which
+    Polygon rejects — so always normalise to the date part."""
+    import pandas as pd
+
+    return pd.Timestamp(d).strftime("%Y-%m-%d")
 
 
 class PolygonClient:

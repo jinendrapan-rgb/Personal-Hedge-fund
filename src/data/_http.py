@@ -65,6 +65,13 @@ def get_json(
     if resp.status_code == 429 or resp.status_code >= 500:
         # Surface as a retryable RequestException.
         resp.raise_for_status()
+    if resp.status_code in (401, 403):
+        raise HttpError(
+            f"Auth/plan error {resp.status_code} for {url.split('?')[0]}: "
+            f"{resp.text[:160]}. The key authenticates but the plan likely "
+            f"lacks the required history depth — the spec needs Polygon "
+            f"Starter (paid) or above; free/Basic tiers will not work."
+        )
     if resp.status_code >= 400:
         raise HttpError(f"GET {url} -> {resp.status_code}: {resp.text[:200]}")
     return resp.json()
